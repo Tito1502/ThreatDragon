@@ -1684,6 +1684,32 @@
         "cells": [
           {
             "position": {
+              "x": 419.99999999999875,
+              "y": -19.99999999999639
+            },
+            "size": {
+              "width": 1040,
+              "height": 510
+            },
+            "attrs": {
+              "label": {
+                "text": "Firma Allsecure"
+              }
+            },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "id": "d4d89d16-e5fd-4eda-9ef5-c0b7e474c905",
+            "zIndex": -1,
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "Firma Allsecure",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
               "x": 200,
               "y": 210
             },
@@ -1703,6 +1729,7 @@
             },
             "visible": true,
             "shape": "actor",
+            "zIndex": 1,
             "ports": {
               "groups": {
                 "top": {
@@ -1786,7 +1813,6 @@
               ]
             },
             "id": "9929b5a4-23ed-4ed0-9c3c-1896a7963105",
-            "zIndex": 1,
             "data": {
               "type": "tm.Actor",
               "name": "User",
@@ -1940,6 +1966,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 3,
             "ports": {
               "groups": {
                 "top": {
@@ -2036,8 +2063,7 @@
               "isWebApplication": false,
               "privilegeLevel": "",
               "threats": []
-            },
-            "zIndex": 3
+            }
           },
           {
             "position": {
@@ -2063,6 +2089,7 @@
             },
             "visible": true,
             "shape": "store",
+            "zIndex": 4,
             "ports": {
               "groups": {
                 "top": {
@@ -2146,7 +2173,6 @@
               ]
             },
             "id": "c38701ac-dbb2-4695-b524-7a3a3c114e2e",
-            "zIndex": 4,
             "data": {
               "type": "tm.Store",
               "name": "Log DB",
@@ -2184,6 +2210,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 5,
             "ports": {
               "groups": {
                 "top": {
@@ -2280,8 +2307,7 @@
               "isWebApplication": false,
               "privilegeLevel": "",
               "threats": []
-            },
-            "zIndex": 5
+            }
           },
           {
             "position": {
@@ -2304,6 +2330,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 6,
             "ports": {
               "groups": {
                 "top": {
@@ -2400,12 +2427,11 @@
               "isWebApplication": false,
               "privilegeLevel": "",
               "threats": []
-            },
-            "zIndex": 6
+            }
           },
           {
             "position": {
-              "x": 1222,
+              "x": 1280,
               "y": 34
             },
             "size": {
@@ -2427,6 +2453,7 @@
             },
             "visible": true,
             "shape": "store",
+            "zIndex": 7,
             "ports": {
               "groups": {
                 "top": {
@@ -2510,7 +2537,6 @@
               ]
             },
             "id": "dbb3686e-078d-446a-b2ed-75d6fa1b0329",
-            "zIndex": 7,
             "data": {
               "type": "tm.Store",
               "name": "SIEM DB",
@@ -2529,7 +2555,7 @@
           },
           {
             "position": {
-              "x": 1222,
+              "x": 1280,
               "y": 390
             },
             "size": {
@@ -2551,6 +2577,7 @@
             },
             "visible": true,
             "shape": "store",
+            "zIndex": 8,
             "ports": {
               "groups": {
                 "top": {
@@ -2634,7 +2661,6 @@
               ]
             },
             "id": "90c671ed-19b4-4269-af73-38aaeb588021",
-            "zIndex": 8,
             "data": {
               "type": "tm.Store",
               "name": "Client Info DB",
@@ -3015,6 +3041,51 @@
             }
           },
           {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Auslesen von Informationen",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "labels": [
+              "Auslesen von Informationen"
+            ],
+            "id": "e89ed67d-d4dc-49d6-8f1a-043d097b78a2",
+            "source": {
+              "cell": "c8c8308a-aa78-4af8-bfb5-0421b25944c7",
+              "port": "583f8b39-9f87-43a6-a89d-d31fe2b81a24"
+            },
+            "target": {
+              "cell": "90c671ed-19b4-4269-af73-38aaeb588021",
+              "port": "6a509a22-f658-4cc2-a61a-c26f45528940"
+            }
+          },
+          {
             "position": {
               "x": 1504,
               "y": 210
@@ -3035,6 +3106,7 @@
             },
             "visible": true,
             "shape": "actor",
+            "zIndex": 11,
             "ports": {
               "groups": {
                 "top": {
@@ -3118,7 +3190,6 @@
               ]
             },
             "id": "ee87d9c8-5493-48cd-a07a-61503bc6d683",
-            "zIndex": 11,
             "data": {
               "type": "tm.Actor",
               "name": "Management",
