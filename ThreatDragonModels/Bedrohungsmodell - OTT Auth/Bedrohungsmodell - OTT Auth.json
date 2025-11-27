@@ -1684,12 +1684,12 @@
         "cells": [
           {
             "position": {
-              "x": 419.99999999999875,
-              "y": -19.99999999999639
+              "x": 419.99999999999807,
+              "y": -14.99999999999855
             },
             "size": {
               "width": 1040,
-              "height": 510
+              "height": 460
             },
             "attrs": {
               "label": {
@@ -1698,8 +1698,8 @@
             },
             "visible": true,
             "shape": "trust-boundary-box",
-            "id": "d4d89d16-e5fd-4eda-9ef5-c0b7e474c905",
             "zIndex": -1,
+            "id": "d4d89d16-e5fd-4eda-9ef5-c0b7e474c905",
             "data": {
               "type": "tm.BoundaryBox",
               "name": "Firma Allsecure",
@@ -2554,130 +2554,6 @@
             }
           },
           {
-            "position": {
-              "x": 1280,
-              "y": 390
-            },
-            "size": {
-              "width": 120,
-              "height": 60
-            },
-            "attrs": {
-              "text": {
-                "text": "Client Info DB"
-              },
-              "topLine": {
-                "strokeWidth": 1.5,
-                "strokeDasharray": null
-              },
-              "bottomLine": {
-                "strokeWidth": 1.5,
-                "strokeDasharray": null
-              }
-            },
-            "visible": true,
-            "shape": "store",
-            "zIndex": 8,
-            "ports": {
-              "groups": {
-                "top": {
-                  "position": "top",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "right": {
-                  "position": "right",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "bottom": {
-                  "position": "bottom",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "left": {
-                  "position": "left",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                }
-              },
-              "items": [
-                {
-                  "group": "top",
-                  "id": "b044e274-8875-4929-ab6c-ab2f1fd81f57"
-                },
-                {
-                  "group": "right",
-                  "id": "4e83f4b6-0d37-4d0d-8a0b-b4ced94711f1"
-                },
-                {
-                  "group": "bottom",
-                  "id": "7e6f0113-313d-475a-99a8-6c6fb74415a4"
-                },
-                {
-                  "group": "left",
-                  "id": "6a509a22-f658-4cc2-a61a-c26f45528940"
-                }
-              ]
-            },
-            "id": "90c671ed-19b4-4269-af73-38aaeb588021",
-            "data": {
-              "type": "tm.Store",
-              "name": "Client Info DB",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isALog": false,
-              "isEncrypted": false,
-              "isSigned": false,
-              "storesCredentials": false,
-              "storesInventory": false,
-              "threats": []
-            }
-          },
-          {
             "shape": "flow",
             "attrs": {
               "line": {
@@ -3037,51 +2913,6 @@
             },
             "target": {
               "cell": "dbb3686e-078d-446a-b2ed-75d6fa1b0329",
-              "port": "6a509a22-f658-4cc2-a61a-c26f45528940"
-            }
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Auslesen von Informationen",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": []
-            },
-            "labels": [
-              "Auslesen von Informationen"
-            ],
-            "id": "e89ed67d-d4dc-49d6-8f1a-043d097b78a2",
-            "source": {
-              "cell": "c8c8308a-aa78-4af8-bfb5-0421b25944c7",
-              "port": "583f8b39-9f87-43a6-a89d-d31fe2b81a24"
-            },
-            "target": {
-              "cell": "90c671ed-19b4-4269-af73-38aaeb588021",
               "port": "6a509a22-f658-4cc2-a61a-c26f45528940"
             }
           },
