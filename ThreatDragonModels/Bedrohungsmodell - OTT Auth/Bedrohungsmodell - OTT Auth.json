@@ -1797,13 +1797,6 @@
               "hasOpenThreats": false,
               "providesAuthentication": false,
               "threats": []
-            },
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove"
-              ],
-              "name": null
             }
           },
           {
@@ -1827,6 +1820,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 2,
             "ports": {
               "groups": {
                 "top": {
@@ -1910,7 +1904,6 @@
               ]
             },
             "id": "86960409-85f3-481e-a1d6-224eabee2113",
-            "zIndex": 2,
             "data": {
               "type": "tm.Process",
               "name": "Login System\nWebapp +\nMobile App",
@@ -2656,6 +2649,234 @@
               "storesCredentials": false,
               "storesInventory": false,
               "threats": []
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Login",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "labels": [
+              "Login"
+            ],
+            "id": "14341336-7c87-4a2d-890d-4961f8102017",
+            "source": {
+              "cell": "9929b5a4-23ed-4ed0-9c3c-1896a7963105",
+              "port": "50d423b4-6c61-4d1e-95bd-fe5fd7fca990"
+            },
+            "target": {
+              "cell": "86960409-85f3-481e-a1d6-224eabee2113",
+              "port": "ebb75a84-9069-4bc1-9ef8-803fd789b295"
+            },
+            "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "1. Auth. Challenge",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "labels": [
+              "1. Auth. Challenge"
+            ],
+            "id": "7333248b-8428-4171-86d8-d9836d1f64ca",
+            "source": {
+              "cell": "86960409-85f3-481e-a1d6-224eabee2113",
+              "port": "3fe09d0a-5660-4cf4-a0bf-e395701f4784"
+            },
+            "target": {
+              "cell": "9af44d45-7a10-4e18-8fe7-3a9ce54f9fa5",
+              "port": "3fe09d0a-5660-4cf4-a0bf-e395701f4784"
+            },
+            "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Erwarteter OTT",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "labels": [
+              "Erwarteter OTT"
+            ],
+            "id": "956b8864-7a5c-4c52-b5d6-c4eb2c9082a2",
+            "source": {
+              "cell": "86960409-85f3-481e-a1d6-224eabee2113",
+              "port": "da183be5-00e6-4a08-a4ce-58d263845275"
+            },
+            "target": {
+              "cell": "9af44d45-7a10-4e18-8fe7-3a9ce54f9fa5",
+              "port": "da183be5-00e6-4a08-a4ce-58d263845275"
+            },
+            "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Log(Login,Telefonnummer,OTT)",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "labels": [
+              "Log(Login,Telefonnummer,OTT)"
+            ],
+            "id": "04c639c5-40d5-4abf-9a03-f973ea428756",
+            "source": {
+              "cell": "9af44d45-7a10-4e18-8fe7-3a9ce54f9fa5",
+              "port": "3fe09d0a-5660-4cf4-a0bf-e395701f4784"
+            },
+            "target": {
+              "cell": "c38701ac-dbb2-4695-b524-7a3a3c114e2e",
+              "port": "7e6f0113-313d-475a-99a8-6c6fb74415a4"
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Überwachung(Logs/Events)",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "labels": [
+              "Überwachung(Logs/Events)"
+            ],
+            "id": "46f1c9a8-07b3-42d0-860a-4e5c9cc2a496",
+            "source": {
+              "cell": "9af44d45-7a10-4e18-8fe7-3a9ce54f9fa5",
+              "port": "583f8b39-9f87-43a6-a89d-d31fe2b81a24"
+            },
+            "target": {
+              "cell": "0990c208-d758-4da2-aca2-96fbc535061a",
+              "port": "ebb75a84-9069-4bc1-9ef8-803fd789b295"
             }
           }
         ]
