@@ -1955,23 +1955,55 @@
                   "new": false,
                   "number": 103,
                   "score": "28"
+                },
+                {
+                  "id": "c2a9ba93-ede5-499f-b1df-f4cfbe7c6df6",
+                  "title": "Session Spoofing",
+                  "status": "Mitigated",
+                  "severity": "Medium",
+                  "type": "Spoofing",
+                  "description": "Angreifer stiehlt oder errät eine gültige Session-ID, um eine bestehende Sitzung zu übernehmen (Session Hijacking) und ohne erneute Authentifizierung Zugang zu erhalten.\n\nCAPEC-60: Reusing Session IDs (aka Seesion replay):\nThis attack targets the reuse of valid session ID to spoof the target system in order to gain privileges. The attacker tries to reuse a stolen session ID used previously during a transaction to perform spoofing and session hijacking. Another name for this type of attack is Session Replay.\n\nATT&CK T1539: Steal Web Session Cookie \nAn adversary may steal web application or service session cookies and use them to gain access to web applications or Internet services as an authenticated user without needing credentials. Web applications and services often use session cookies as an authentication token after a user has authenticated to a website.\n\n8 + 7 + 6 + 6 = 27",
+                  "mitigation": "(OWASP ASVS 3.4 / 3.7 – Session Management Controls)\n\nBeschreibung\n\nVerhindert Session Replay, indem:\n\nSessions an Gerät, Browser-Fingerprints oder IP gebunden werden\n\nSession Cookies regelmäßig rotiert werden\n\nSameSite=Strict, HttpOnly, Secure erzwungen werden\n\nRemote Wiederverwendung der Session ungültig wird\n\nTechnische Umsetzung\n\nSession-ID wird an Client-Fingerprint gebunden\n\nRotation des Session-Tokens nach Login & periodisch\n\nInvalidate Session on Change: PW-Änderung, 2FA-Änderung\n\nAktivierung von TLS + Cookie Flags\n\n8 + 4 + 3 + 4 = 19",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 104,
+                  "score": "27"
+                },
+                {
+                  "id": "038a96f2-6559-4e99-b21c-cc2d84e4051b",
+                  "title": "Admin-Rechte durch Parameter-Manipulation",
+                  "status": "Mitigated",
+                  "severity": "Medium",
+                  "type": "Elevation of privilege",
+                  "description": "Ein authentifizierter Benutzer kann durch Manipulation von Parametern möglicherweise Admin Rechte erhalten oder Funktionen ausführen .\n\nCAPEC-122: Privilege Abuse An adversary is able to exploit features of the target that should be reserved for privileged users or administrators but are exposed to use by lower or non-privileged accounts.\n\nATTACK: T1068 Exploitation for Privilege Escalation \nAdversaries may exploit software vulnerabilities in an attempt to elevate privileges.\n\n9 + 6 + 7 + 5 = 27",
+                  "mitigation": "(OWASP ASVS 4.1 – Access Control)\n\nBeschreibung\n- Angreifer können keine Admin-Operationen ausführen, selbst wenn sie Parameter manipulieren.\n- Technische Umsetzung\n- RBAC/ABAC Enforcement serverseitig, nicht im Client\n- Jeder API-Call prüft:\n             Rolle\n             Besitzerrechte\n             Objektberechtigungen\n\n- Sensitive Admin-Funktionen nur per\n             MFA\n             signierte Requests\n             Audit Logging\n\n9 + 3 + 3 + 3 = 18",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 105,
+                  "score": "27"
+                },
+                {
+                  "id": "c055ad8f-b860-4b1f-99c1-19081fa4f2c3",
+                  "title": "App Daten auslesen (SD-Karte)",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "Die App speichert alle Daten auf der SD-Karte (Public Storage). Angreifer können diese durch andere Apps (compromised Handys) auslesen\nMitre CAPEC-37: Retrieve Embedded Sensitive Data\nAn attacker examines a target system to find sensitive data that has been embedded within it.\n\nMitre ATT&CK: T1409 Stored Application Data\nAdversaries may try to access and collect application data resident on the device\n\n7 + 8 + 9 + 7 = 31",
+                  "mitigation": "(OWASP MASVS – MASVS-STORAGE-1 & STORAGE-2)\n\nBeschreibung\n- Sensible App-Daten werden nicht mehr auf der SD-Karte gespeichert.\nStattdessen:\n     \tAndroid Keystore für Schlüssel\n     \tEncryptedSharedPreferences oder SQLCipher\n     \tinterner App-Storage (nicht freigegeben für andere Apps)\n\nTechnische Umsetzung\n- Migration aller sensiblen Daten in Android Internal Storage\n- Verwendung von androidx.security.crypto.EncryptedFile\n- Entfernen von SD-Card Zugriffsrechten\n- Laufzeitprüfung: Applikation verweigert Start, wenn unsichere Storage-Option aktiv ist",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 106,
+                  "score": "31"
                 }
               ],
               "threatFrequency": {
-                "spoofing": 0,
+                "spoofing": 3,
                 "tampering": 0,
                 "repudiation": 0,
-                "informationDisclosure": 0,
+                "informationDisclosure": 1,
                 "denialOfService": 3,
-                "elevationOfPrivilege": 0
+                "elevationOfPrivilege": 1
               }
-            },
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove"
-              ],
-              "name": null
             }
           },
           {
@@ -2091,7 +2123,29 @@
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "db08e1b0-2540-4ace-bbdb-6673a5396176",
+                  "title": "Überlastung des 2FA-Dienstes durch OTT-Flooding",
+                  "status": "Mitigated",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "Ein Angreifer schickt massenhaft 2FA-Anfragen (z.B. automatisierte Login-Versuche, die jedes Mal einen neuen OTT auslösen), sodass der 2-Faktor-Authentifizierungsdienst überlastet wird. Legitimen Nutzern können dann keine OTTs mehr zugestellt werden; Logins schlagen fehl.\n\nCAPEC-125 – Flooding (Ressourcenverbrauch durch sehr viele Anfragen, um einen Dienst lahmzulegen). \n\nTA0040 – Impact – Angreifer stört die Verfügbarkeit von Diensten als Auswirkungs-Taktik (DoS).\n\n8 + 7 + 8 + 9 = 32",
+                  "mitigation": "Maßnahmen:\n- Rate Limiting\n- Captcha Requests\n- Load Balancer mit DDOS-Schutz\n- automatisches Blacklisting von IPs\n\nOWASP ASVS 6.1.1 Rate Limiting\n\n8 + 3 + 3 + 9 = 23 ",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 107,
+                  "score": "32"
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 1,
+                "elevationOfPrivilege": 0
+              }
             }
           },
           {
@@ -3167,7 +3221,7 @@
     ],
     "reviewer": "Georg Neugebauer",
     "diagramTop": 12,
-    "threatTop": 103
+    "threatTop": 107
   },
   "version": "2.5.0"
 }
