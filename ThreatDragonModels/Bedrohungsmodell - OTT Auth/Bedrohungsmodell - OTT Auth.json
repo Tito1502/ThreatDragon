@@ -2397,7 +2397,7 @@
                   "severity": "Medium",
                   "type": "Repudiation",
                   "description": "Ein Angreifer erhält Zugriff auf das SIEM-System oder die zugrunde liegende Datenbank und:\n- löscht Einträge,\n- ändert Zeitstempel,\n- fügt falsche Logs ein\n- oder manipuliert Report-Daten vor der wöchentlichen Generierung.\n\nZiel ist es, sicherheitsrelevante Spuren zu verwischen, Anomalien unkenntlich zu machen oder die eigene Kompromittierung zu verbergen.\n\nCAPEC-268: Audit Log Manipulation\nATT&CK T1070: Indicator Removal\n\n8 + 6 + 7 + 7 = 28",
-                  "mitigation": "Maßnahmen:\n- Write-Once Storage (WORM)\n- Kryptographisch verkettete Logs\n- Logs extern speichern\n- Least Privilege – kein direktes Schreiben in Reports\n              Reports werden nur read-only aus Logquellen generiert\n\n4 + 3 + 4 + 3 = 14",
+                  "mitigation": "MITRE D3FEND : D3-FIM (File Integrity Monitoring)\n\nMaßnahmen:\n- Write-Once Storage (WORM)\n- Kryptographisch verkettete Logs\n- Logs extern speichern\n- Least Privilege – kein direktes Schreiben in Reports\n              Reports werden nur read-only aus Logquellen generiert\n\n4 + 3 + 4 + 3 = 14",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 111,
@@ -2407,18 +2407,11 @@
               "threatFrequency": {
                 "spoofing": 0,
                 "tampering": 0,
-                "repudiation": 1,
+                "repudiation": 2,
                 "informationDisclosure": 0,
                 "denialOfService": 0,
                 "elevationOfPrivilege": 0
               }
-            },
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove"
-              ],
-              "name": null
             }
           },
           {
@@ -2546,7 +2539,7 @@
                   "severity": "High",
                   "type": "Tampering",
                   "description": "Ein Angreifer manipuliert den OTT, bevor er an den Benutzer gesendet wird (z.B. ersetzt den Code durch einen eigenen). So könnte der Angreifer sich mit dem von ihm kontrollierten OTT einloggen oder den legitimen Benutzer aussperren.\n\nAngriffsvektoren:\n- Angreifer befindet sich im Netzwerkpfad (MiTM) und manipuliert HTTP-/API-Traffic\n- Eine kompromittierte Komponente (Proxy, Gateway, Reverse Proxy) ersetzt OTT-Tokens\n- Interner Angreifer manipuliert OTTs in der Datenbank des OTT-Service\n- Schwache Integritätsmechanismen erlauben das Ersetzen der OTT-Payload\n\nCAPEC-384: Application API Message Manipulation via Man-in-the-Middle\n\nATT&CK T1556: Modify Authentication Process\n\n10 + 6 + 7 + 9 = 32",
-                  "mitigation": "Maßnahmen:\n- Der OTT wird serverseitig generiert und kryptographisch signiert\n- Striktes Transportlayer-Hardening\n- Serverseitige Integritätschecks\n- Manipulationsüberwachung\n\n5 + 3 + 3 + 4",
+                  "mitigation": "Mitre Defend: D3-MAN (Message Authentication)\n\nMaßnahmen:\n- Der OTT wird serverseitig generiert und kryptographisch signiert\n- Striktes Transportlayer-Hardening\n- Serverseitige Integritätschecks\n- Manipulationsüberwachung\n\n5 + 3 + 3 + 4",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 109,
@@ -2555,7 +2548,7 @@
               ],
               "threatFrequency": {
                 "spoofing": 0,
-                "tampering": 1,
+                "tampering": 2,
                 "repudiation": 0,
                 "informationDisclosure": 0,
                 "denialOfService": 0,
