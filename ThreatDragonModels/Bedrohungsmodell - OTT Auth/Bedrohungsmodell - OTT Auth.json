@@ -2684,8 +2684,8 @@
                   "status": "Mitigated",
                   "severity": "High",
                   "type": "Information disclosure",
-                  "description": "Beschreibung:\nDer 2FA-Dienst oder der OTT Service speichert sensible Daten wie Telefonnummern, OTT-Tokens oder Session-IDs im Klartext in Logs. Erlangt ein Angreifer Zugriff auf diese Logs, kann er personenbezogene Daten und OTPs auslesen und so 2FA-Sicherheit umgehen.\n\nCAPEC-37 – Retrieve Embedded Sensitive Data (Auslesen eingebetteter sensibler Daten, z.B. in Dateien/Logs). \n\nTA0010 – Exfiltration – der Angreifer stiehlt sensible Daten aus dem Netzwerk, hier konkret aus Logs.\n\n9 + 8 + 7 + 8 = 32\n",
-                  "mitigation": "Keine Telefonnummer, OTT in die log dateien schreiben\nOWASP MASVS Privacy 1",
+                  "description": "Beschreibung:\nDer 2FA-Dienst oder der OTT Service speichert sensible Daten wie Telefonnummern, OTT-Tokens oder Session-IDs im Klartext in Logs. Erlangt ein Angreifer Zugriff auf diese Logs, kann er personenbezogene Daten und OTPs auslesen und so 2FA-Sicherheit umgehen.\n\nEin Angreifer:\n- bekommt Zugriff auf SIEM-Datenbank (misconfigured access, insider threat)\n- erhält lokales System- oder Backup-File der Datenbank\n- extrahiert Logs über ungeschützte Log-Exporter\n- erhält den monatlichen RAW-Daten-Export (E-Mail!)\n\nCAPEC-37 – Retrieve Embedded Sensitive Data (Auslesen eingebetteter sensibler Daten, z.B. in Dateien/Logs). \n\nTA0010 – Exfiltration – der Angreifer stiehlt sensible Daten aus dem Netzwerk, hier konkret aus Logs.\n\n9 + 8 + 7 + 8 = 32\n",
+                  "mitigation": "OWASP MASVS Privacy 1\n\nMaßnahmen:\nSensibler Inhalt muss daher:\n       gehasht, maskiert oder pseudonymisiert gespeichert werden\n       OTT-Tokens dürfen niemals im Klartext im Log auftauchen\n       Session-IDs dürfen nur als Hash abgelegt werden\n       Telefonnummern werden teilweise maskiert („+49 123 *** 88“)\n       SIEM-DB wird verschlüsselt (AES-256 / Transparent Encryption)\n       Backups werden ebenfalls verschlüsselt gespeichert\n\n6 + 3 + 3 + 3 = 15\n",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 108,
@@ -2695,7 +2695,7 @@
               "threatFrequency": {
                 "tampering": 0,
                 "repudiation": 0,
-                "informationDisclosure": 1,
+                "informationDisclosure": 2,
                 "denialOfService": 0
               }
             }
