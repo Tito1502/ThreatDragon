@@ -2174,7 +2174,7 @@
             },
             "attrs": {
               "text": {
-                "text": "2FA Service"
+                "text": "SIEM System"
               },
               "body": {
                 "stroke": "#333333",
@@ -2269,7 +2269,7 @@
             "id": "0990c208-d758-4da2-aca2-96fbc535061a",
             "data": {
               "type": "tm.Process",
-              "name": "2FA Service",
+              "name": "SIEM System",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -2877,6 +2877,303 @@
             "target": {
               "cell": "0990c208-d758-4da2-aca2-96fbc535061a",
               "port": "ebb75a84-9069-4bc1-9ef8-803fd789b295"
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Überwachung(Logs/Events)",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "labels": [
+              "Überwachung(Logs/Events)"
+            ],
+            "id": "c9a7bd9f-3a80-42eb-b902-3bd9fbb4f5d1",
+            "source": {
+              "cell": "c8c8308a-aa78-4af8-bfb5-0421b25944c7",
+              "port": "3fe09d0a-5660-4cf4-a0bf-e395701f4784"
+            },
+            "target": {
+              "cell": "0990c208-d758-4da2-aca2-96fbc535061a",
+              "port": "da183be5-00e6-4a08-a4ce-58d263845275"
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "2. Weiterleitung\nTelefonnummer + OTT",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "labels": [
+              "2. Weiterleitung\nTelefonnummer + OTT"
+            ],
+            "id": "ebad5258-8bff-44b5-8d7c-34c497a500e6",
+            "source": {
+              "cell": "9af44d45-7a10-4e18-8fe7-3a9ce54f9fa5",
+              "port": "583f8b39-9f87-43a6-a89d-d31fe2b81a24"
+            },
+            "target": {
+              "cell": "c8c8308a-aa78-4af8-bfb5-0421b25944c7",
+              "port": "ebb75a84-9069-4bc1-9ef8-803fd789b295"
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Store Logs",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "labels": [
+              "Store Logs"
+            ],
+            "id": "32cf06e9-f263-40d9-a20e-a8f4b25a5168",
+            "source": {
+              "cell": "0990c208-d758-4da2-aca2-96fbc535061a",
+              "port": "583f8b39-9f87-43a6-a89d-d31fe2b81a24"
+            },
+            "target": {
+              "cell": "dbb3686e-078d-446a-b2ed-75d6fa1b0329",
+              "port": "6a509a22-f658-4cc2-a61a-c26f45528940"
+            }
+          },
+          {
+            "position": {
+              "x": 1504,
+              "y": 210
+            },
+            "size": {
+              "width": 112.5,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Management"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "3e68f480-9177-4811-9588-7caba260de30"
+                },
+                {
+                  "group": "right",
+                  "id": "50d423b4-6c61-4d1e-95bd-fe5fd7fca990"
+                },
+                {
+                  "group": "bottom",
+                  "id": "f3b3477f-a31f-4a44-8d30-18c3a3893da3"
+                },
+                {
+                  "group": "left",
+                  "id": "20673bc7-7532-4359-b87c-39951a6943ab"
+                }
+              ]
+            },
+            "id": "ee87d9c8-5493-48cd-a07a-61503bc6d683",
+            "zIndex": 11,
+            "data": {
+              "type": "tm.Actor",
+              "name": "Management",
+              "description": "",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "providesAuthentication": false,
+              "threats": []
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 12,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Wöchentlicher Bericht(E-Mail)",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "labels": [
+              "Wöchentlicher Bericht(E-Mail)"
+            ],
+            "id": "c1395b8a-ad6c-4b3e-84ed-27b8e8f0de61",
+            "source": {
+              "cell": "0990c208-d758-4da2-aca2-96fbc535061a",
+              "port": "583f8b39-9f87-43a6-a89d-d31fe2b81a24"
+            },
+            "target": {
+              "cell": "ee87d9c8-5493-48cd-a07a-61503bc6d683",
+              "port": "20673bc7-7532-4359-b87c-39951a6943ab"
             }
           }
         ]
