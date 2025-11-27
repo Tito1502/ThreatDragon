@@ -3086,6 +3086,57 @@
             }
           },
           {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "OTT",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "labels": [
+              "OTT"
+            ],
+            "id": "c9f5b7aa-026c-47a5-bc21-4280be91fa0d",
+            "source": {
+              "cell": "c8c8308a-aa78-4af8-bfb5-0421b25944c7",
+              "port": "da183be5-00e6-4a08-a4ce-58d263845275"
+            },
+            "target": {
+              "cell": "86960409-85f3-481e-a1d6-224eabee2113",
+              "port": "da183be5-00e6-4a08-a4ce-58d263845275"
+            },
+            "vertices": [
+              {
+                "x": 760,
+                "y": 360
+              }
+            ]
+          },
+          {
             "position": {
               "x": 1504,
               "y": 210
