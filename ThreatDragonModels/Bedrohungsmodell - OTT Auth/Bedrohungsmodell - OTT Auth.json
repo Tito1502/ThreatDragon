@@ -1668,7 +1668,7 @@
             }
           }
         ],
-        "version": "2.1.1",
+        "version": "2.5.0",
         "title": "Architekturdiagramm",
         "thumbnail": "./public/content/images/thumbnail.stride.jpg",
         "id": 0,
@@ -1676,7 +1676,7 @@
       }
     ],
     "reviewer": "Georg Neugebauer",
-    "diagramTop": 10,
+    "diagramTop": 11,
     "threatTop": 102
   },
   "version": "2.5.0"
