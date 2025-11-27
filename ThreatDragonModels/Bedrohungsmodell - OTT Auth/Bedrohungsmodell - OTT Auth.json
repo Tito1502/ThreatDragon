@@ -2389,7 +2389,36 @@
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "dd1c165f-857a-42b8-a01c-b9fbf3a660f9",
+                  "title": "Reports Repudiation",
+                  "status": "Mitigated",
+                  "severity": "Medium",
+                  "type": "Repudiation",
+                  "description": "Ein Angreifer erhält Zugriff auf das SIEM-System oder die zugrunde liegende Datenbank und:\n- löscht Einträge,\n- ändert Zeitstempel,\n- fügt falsche Logs ein\n- oder manipuliert Report-Daten vor der wöchentlichen Generierung.\n\nZiel ist es, sicherheitsrelevante Spuren zu verwischen, Anomalien unkenntlich zu machen oder die eigene Kompromittierung zu verbergen.\n\nCAPEC-268: Audit Log Manipulation\nATT&CK T1070: Indicator Removal\n\n8 + 6 + 7 + 7 = 28",
+                  "mitigation": "Maßnahmen:\n- Write-Once Storage (WORM)\n- Kryptographisch verkettete Logs\n- Logs extern speichern\n- Least Privilege – kein direktes Schreiben in Reports\n              Reports werden nur read-only aus Logquellen generiert\n\n4 + 3 + 4 + 3 = 14",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 111,
+                  "score": "28"
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 0,
+                "repudiation": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
+            },
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove"
+              ],
+              "name": null
             }
           },
           {
@@ -2509,7 +2538,29 @@
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "e45a7f22-9f2e-4928-828f-386d32d32efb",
+                  "title": "Manipulation der OTT-Nachricht",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "Ein Angreifer manipuliert den OTT, bevor er an den Benutzer gesendet wird (z.B. ersetzt den Code durch einen eigenen). So könnte der Angreifer sich mit dem von ihm kontrollierten OTT einloggen oder den legitimen Benutzer aussperren.\n\nAngriffsvektoren:\n- Angreifer befindet sich im Netzwerkpfad (MiTM) und manipuliert HTTP-/API-Traffic\n- Eine kompromittierte Komponente (Proxy, Gateway, Reverse Proxy) ersetzt OTT-Tokens\n- Interner Angreifer manipuliert OTTs in der Datenbank des OTT-Service\n- Schwache Integritätsmechanismen erlauben das Ersetzen der OTT-Payload\n\nCAPEC-384: Application API Message Manipulation via Man-in-the-Middle\n\nATT&CK T1556: Modify Authentication Process\n\n10 + 6 + 7 + 9 = 32",
+                  "mitigation": "Maßnahmen:\n- Der OTT wird serverseitig generiert und kryptographisch signiert\n- Striktes Transportlayer-Hardening\n- Serverseitige Integritätschecks\n- Manipulationsüberwachung\n\n5 + 3 + 3 + 4",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 109,
+                  "score": "32"
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 1,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
             }
           },
           {
@@ -2633,7 +2684,27 @@
               "isSigned": false,
               "storesCredentials": false,
               "storesInventory": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "74b495c6-0455-4399-9013-36bf42d47f5c",
+                  "title": "Offenlegung sensibler Daten",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "Beschreibung:\nDer 2FA-Dienst oder der OTT Service speichert sensible Daten wie Telefonnummern, OTT-Tokens oder Session-IDs im Klartext in Logs. Erlangt ein Angreifer Zugriff auf diese Logs, kann er personenbezogene Daten und OTPs auslesen und so 2FA-Sicherheit umgehen.\n\nCAPEC-37 – Retrieve Embedded Sensitive Data (Auslesen eingebetteter sensibler Daten, z.B. in Dateien/Logs). \n\nTA0010 – Exfiltration – der Angreifer stiehlt sensible Daten aus dem Netzwerk, hier konkret aus Logs.\n\n9 + 8 + 7 + 8 = 32\n",
+                  "mitigation": "Keine Telefonnummer, OTT in die log dateien schreiben\nOWASP MASVS Privacy 1",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 108,
+                  "score": "32"
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0
+              }
             }
           },
           {
@@ -3221,7 +3292,7 @@
     ],
     "reviewer": "Georg Neugebauer",
     "diagramTop": 12,
-    "threatTop": 107
+    "threatTop": 111
   },
   "version": "2.5.0"
 }
