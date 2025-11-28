@@ -1962,8 +1962,8 @@
                   "status": "Mitigated",
                   "severity": "Medium",
                   "type": "Spoofing",
-                  "description": "Angreifer stiehlt oder errät eine gültige Session-ID, um eine bestehende Sitzung zu übernehmen (Session Hijacking) und ohne erneute Authentifizierung Zugang zu erhalten.\n\nCAPEC-60: Reusing Session IDs (aka Seesion replay):\nThis attack targets the reuse of valid session ID to spoof the target system in order to gain privileges. The attacker tries to reuse a stolen session ID used previously during a transaction to perform spoofing and session hijacking. Another name for this type of attack is Session Replay.\n\nATT&CK T1539: Steal Web Session Cookie \nAn adversary may steal web application or service session cookies and use them to gain access to web applications or Internet services as an authenticated user without needing credentials. Web applications and services often use session cookies as an authentication token after a user has authenticated to a website.\n\n8 + 7 + 6 + 6 = 27",
-                  "mitigation": "(OWASP ASVS 3.4 / 3.7 – Session Management Controls)\n\nBeschreibung\n\nVerhindert Session Replay, indem:\n\nSessions an Gerät, Browser-Fingerprints oder IP gebunden werden\n\nSession Cookies regelmäßig rotiert werden\n\nSameSite=Strict, HttpOnly, Secure erzwungen werden\n\nRemote Wiederverwendung der Session ungültig wird\n\nTechnische Umsetzung\n\nSession-ID wird an Client-Fingerprint gebunden\n\nRotation des Session-Tokens nach Login & periodisch\n\nInvalidate Session on Change: PW-Änderung, 2FA-Änderung\n\nAktivierung von TLS + Cookie Flags\n\n8 + 4 + 3 + 4 = 19",
+                  "description": "Angreifer stiehlt oder errät eine gültige Session-ID, um eine bestehende Sitzung zu übernehmen (Session Hijacking) und ohne erneute Authentifizierung Zugang zu erhalten. Die Sessions sind 1 Jahr gültig.\n\nCAPEC-60: Reusing Session IDs (aka Seesion replay):\nThis attack targets the reuse of valid session ID to spoof the target system in order to gain privileges. The attacker tries to reuse a stolen session ID used previously during a transaction to perform spoofing and session hijacking. Another name for this type of attack is Session Replay.\n\nATT&CK T1539: Steal Web Session Cookie \nAn adversary may steal web application or service session cookies and use them to gain access to web applications or Internet services as an authenticated user without needing credentials. Web applications and services often use session cookies as an authentication token after a user has authenticated to a website.\n\n8 + 7 + 6 + 6 = 27",
+                  "mitigation": "(OWASP ASVS 3.4 / 3.7 – Session Management Controls)\n\nVerhindert Session Replay, indem:\n      Sessions an Gerät, Browser-Fingerprints oder IP gebunden werden\n      Session Cookies regelmäßig rotiert werden\n      SameSite=Strict, HttpOnly, Secure erzwungen werden\n      Remote Wiederverwendung der Session ungültig wird\n\nTechnische Umsetzung\n- Session-ID wird an Client-Fingerprint gebunden\n- Rotation des Session-Tokens nach Login & periodisch\n- Invalidate Session on Change: PW-Änderung, 2FA-Änderung\n- Aktivierung von TLS + Cookie Flags\n\n8 + 4 + 3 + 4 = 19",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 104,
@@ -1976,7 +1976,7 @@
                   "severity": "Medium",
                   "type": "Elevation of privilege",
                   "description": "Ein authentifizierter Benutzer kann durch Manipulation von Parametern möglicherweise Admin Rechte erhalten oder Funktionen ausführen .\n\nCAPEC-122: Privilege Abuse An adversary is able to exploit features of the target that should be reserved for privileged users or administrators but are exposed to use by lower or non-privileged accounts.\n\nATTACK: T1068 Exploitation for Privilege Escalation \nAdversaries may exploit software vulnerabilities in an attempt to elevate privileges.\n\n9 + 6 + 7 + 5 = 27",
-                  "mitigation": "(OWASP ASVS 4.1 – Access Control)\n\nBeschreibung\n- Angreifer können keine Admin-Operationen ausführen, selbst wenn sie Parameter manipulieren.\n- Technische Umsetzung\n- RBAC/ABAC Enforcement serverseitig, nicht im Client\n- Jeder API-Call prüft:\n             Rolle\n             Besitzerrechte\n             Objektberechtigungen\n\n- Sensitive Admin-Funktionen nur per\n             MFA\n             signierte Requests\n             Audit Logging\n\n9 + 3 + 3 + 3 = 18",
+                  "mitigation": "(OWASP ASVS 4.1 – Access Control)\n\nBeschreibung\n- Angreifer können keine Admin-Operationen ausführen, selbst wenn sie Parameter manipulieren.\nTechnische Umsetzung:\n- RBAC/ABAC Enforcement serverseitig, nicht im Client\n- Jeder API-Call prüft:\n             Rolle\n             Besitzerrechte\n             Objektberechtigungen\n\n- Sensitive Admin-Funktionen nur per\n             MFA\n             signierte Requests\n             Audit Logging\n\n5 + 3 + 3 + 3 = 14",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 105,
@@ -1997,12 +1997,12 @@
                 }
               ],
               "threatFrequency": {
-                "spoofing": 3,
+                "spoofing": 5,
                 "tampering": 0,
                 "repudiation": 0,
                 "informationDisclosure": 1,
                 "denialOfService": 3,
-                "elevationOfPrivilege": 1
+                "elevationOfPrivilege": 2
               }
             }
           },
@@ -2130,12 +2130,12 @@
                   "status": "Mitigated",
                   "severity": "TBD",
                   "type": "Denial of service",
-                  "description": "Ein Angreifer schickt massenhaft 2FA-Anfragen (z.B. automatisierte Login-Versuche, die jedes Mal einen neuen OTT auslösen), sodass der 2-Faktor-Authentifizierungsdienst überlastet wird. Legitimen Nutzern können dann keine OTTs mehr zugestellt werden; Logins schlagen fehl.\n\nCAPEC-125 – Flooding (Ressourcenverbrauch durch sehr viele Anfragen, um einen Dienst lahmzulegen). \n\nTA0040 – Impact – Angreifer stört die Verfügbarkeit von Diensten als Auswirkungs-Taktik (DoS).\n\n8 + 7 + 8 + 9 = 32",
+                  "description": "Ein Angreifer schickt massenhaft 2FA-Anfragen (z.B. automatisierte Login-Versuche, die jedes Mal einen neuen OTT auslösen), sodass der 2-Faktor-Authentifizierungsdienst überlastet wird. Legitimen Nutzern können dann keine OTTs mehr zugestellt werden; Logins schlagen fehl.\n\nCAPEC-125 – Flooding (Ressourcenverbrauch durch sehr viele Anfragen, um einen Dienst lahmzulegen). \n\nTA0040 – Impact – Angreifer stört die Verfügbarkeit von Diensten als Auswirkungs-Taktik (DoS).\n\n10 + 8 + 8 + 9 = 35",
                   "mitigation": "Maßnahmen:\n- Rate Limiting\n- Captcha Requests\n- Load Balancer mit DDOS-Schutz\n- automatisches Blacklisting von IPs\n\nOWASP ASVS 6.1.1 Rate Limiting\n\n8 + 3 + 3 + 9 = 23 ",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 107,
-                  "score": "32"
+                  "score": "35"
                 }
               ],
               "threatFrequency": {
@@ -2143,7 +2143,7 @@
                 "tampering": 0,
                 "repudiation": 0,
                 "informationDisclosure": 0,
-                "denialOfService": 1,
+                "denialOfService": 3,
                 "elevationOfPrivilege": 0
               }
             }
@@ -2412,13 +2412,6 @@
                 "denialOfService": 0,
                 "elevationOfPrivilege": 0
               }
-            },
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove"
-              ],
-              "name": null
             }
           },
           {
@@ -2773,98 +2766,6 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "1. Auth. Challenge",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": []
-            },
-            "labels": [
-              "1. Auth. Challenge"
-            ],
-            "id": "7333248b-8428-4171-86d8-d9836d1f64ca",
-            "source": {
-              "cell": "86960409-85f3-481e-a1d6-224eabee2113",
-              "port": "3fe09d0a-5660-4cf4-a0bf-e395701f4784"
-            },
-            "target": {
-              "cell": "9af44d45-7a10-4e18-8fe7-3a9ce54f9fa5",
-              "port": "3fe09d0a-5660-4cf4-a0bf-e395701f4784"
-            },
-            "vertices": []
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Erwarteter OTT",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": []
-            },
-            "labels": [
-              "Erwarteter OTT"
-            ],
-            "id": "956b8864-7a5c-4c52-b5d6-c4eb2c9082a2",
-            "source": {
-              "cell": "86960409-85f3-481e-a1d6-224eabee2113",
-              "port": "da183be5-00e6-4a08-a4ce-58d263845275"
-            },
-            "target": {
-              "cell": "9af44d45-7a10-4e18-8fe7-3a9ce54f9fa5",
-              "port": "da183be5-00e6-4a08-a4ce-58d263845275"
-            },
-            "vertices": []
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
               "name": "Log(Login,Telefonnummer,OTT)",
               "description": "",
               "outOfScope": false,
@@ -3000,51 +2901,6 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "2. Weiterleitung\nTelefonnummer + OTT",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": []
-            },
-            "labels": [
-              "2. Weiterleitung\nTelefonnummer + OTT"
-            ],
-            "id": "ebad5258-8bff-44b5-8d7c-34c497a500e6",
-            "source": {
-              "cell": "9af44d45-7a10-4e18-8fe7-3a9ce54f9fa5",
-              "port": "583f8b39-9f87-43a6-a89d-d31fe2b81a24"
-            },
-            "target": {
-              "cell": "c8c8308a-aa78-4af8-bfb5-0421b25944c7",
-              "port": "ebb75a84-9069-4bc1-9ef8-803fd789b295"
-            }
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
               "name": "Store Logs",
               "description": "",
               "outOfScope": false,
@@ -3090,6 +2946,97 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
+              "name": "1. Auth. Challenge",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "labels": [
+              "1. Auth. Challenge"
+            ],
+            "id": "7333248b-8428-4171-86d8-d9836d1f64ca",
+            "source": {
+              "cell": "86960409-85f3-481e-a1d6-224eabee2113",
+              "port": "3fe09d0a-5660-4cf4-a0bf-e395701f4784"
+            },
+            "target": {
+              "cell": "9af44d45-7a10-4e18-8fe7-3a9ce54f9fa5",
+              "port": "3fe09d0a-5660-4cf4-a0bf-e395701f4784"
+            },
+            "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "2. Weiterleitung\nTelefonnummer + OTT",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "labels": [
+              "2. Weiterleitung\nTelefonnummer + OTT"
+            ],
+            "id": "ebad5258-8bff-44b5-8d7c-34c497a500e6",
+            "source": {
+              "cell": "9af44d45-7a10-4e18-8fe7-3a9ce54f9fa5",
+              "port": "583f8b39-9f87-43a6-a89d-d31fe2b81a24"
+            },
+            "target": {
+              "cell": "c8c8308a-aa78-4af8-bfb5-0421b25944c7",
+              "port": "ebb75a84-9069-4bc1-9ef8-803fd789b295"
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
               "name": "OTT",
               "description": "",
               "outOfScope": false,
@@ -3097,7 +3044,7 @@
               "reasonOutOfScope": "",
               "hasOpenThreats": false,
               "isBidirectional": false,
-              "isEncrypted": false,
+              "isEncrypted": true,
               "isPublicNetwork": false,
               "protocol": "",
               "threats": []
@@ -3124,6 +3071,52 @@
                 "y": 330
               }
             ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Erwarteter OTT",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "labels": [
+              "Erwarteter OTT"
+            ],
+            "id": "956b8864-7a5c-4c52-b5d6-c4eb2c9082a2",
+            "source": {
+              "cell": "86960409-85f3-481e-a1d6-224eabee2113",
+              "port": "da183be5-00e6-4a08-a4ce-58d263845275"
+            },
+            "target": {
+              "cell": "9af44d45-7a10-4e18-8fe7-3a9ce54f9fa5",
+              "port": "da183be5-00e6-4a08-a4ce-58d263845275"
+            },
+            "vertices": []
           },
           {
             "position": {
@@ -3269,7 +3262,7 @@
               "reasonOutOfScope": "",
               "hasOpenThreats": false,
               "isBidirectional": false,
-              "isEncrypted": false,
+              "isEncrypted": true,
               "isPublicNetwork": false,
               "protocol": "",
               "threats": []
